@@ -18,9 +18,7 @@ function filePreview(input) {
         var reader = new FileReader();
         reader.onload = function (e) {
             count += 1;
-            // $('#uploadForm + img').remove();
-            // $('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
-            $('#uploaded').append(
+           $('#uploaded').append(
                 '<div class="row my-2" id="row' + count + '"><div class="col" id="preview' + count + '"></div><div class="col text-center align-self-center" id="remove' + count + '"></div></div>'
             )
             $('#preview' + count).append(
