@@ -22,11 +22,10 @@
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
              </button>
-             <div class="collapse navbar-collapse row justify-content-center" id="navbarNavAltMarkup">
-                 <div class="navbar-nav col-5 gap-2">
+             <div class="collapse navbar-collapse row justify-content-end" id="navbarNavAltMarkup">
+                 <div class="navbar-nav col-3 gap-2">
                      <a class="nav-link fs-5 text-secondary text-green" aria-current="page" href="./">Home</a>
                      <a class="nav-link fs-5 text-secondary" href="./gallery.html">My Gallery</a>
-                     <a class="nav-link fs-5 text-secondary" href="./about.html">About</a>
                  </div>
              </div>
          </div>
