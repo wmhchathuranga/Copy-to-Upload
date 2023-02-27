@@ -19,7 +19,7 @@
         $img = new stdClass();
         $row = $res->fetch_assoc();
         $img->id = $row['id'];
-        $img->src = "https://" . $StorageServer . $ImagePath . $row['img_name'];
+        $img->src = "http://" . $StorageServer . $ImagePath . $row['img_name'];
         array_push($image_list, $img);
     }
 
