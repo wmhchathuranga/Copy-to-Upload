@@ -33,3 +33,7 @@ main {
     box-shadow: 0 0 32px #333;
     transform: scale(1.02) !important;
 }
+
+.advertiesment > div{
+    border: 1px solid black;
+}
