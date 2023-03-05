@@ -9,7 +9,6 @@ body {
     padding-top: 100px;
 }
 
-
 .hello {
     opacity: 1 !important;
 }
@@ -35,18 +34,18 @@ body {
     padding-top: 70px;
     left: 50%;
     transform: translate3d(0, 0, 0);
-    animation: zoomin 1s ease;
+    /* animation: zoomin 1s ease; */
     max-width: 100%;
     max-height: 90vh;
     margin: auto;
 }
 
 .byebye {
-    opacity: 0;
+    /* opacity: 0; */
 }
 
 .byebye:hover {
-    transform: scale(0.2) !important;
+    /* transform: scale(0.2) !important; */
 }
 
 .gallery {
@@ -70,6 +69,19 @@ body {
 
 .gallery .content {
     padding: 4px;
+    position: relative;
+    /* background-color: rebeccapurple; */
+}
+
+.content .cover {
+    background-color: red;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    /* display: block; */
 }
 
 .gallery .gallery-item {

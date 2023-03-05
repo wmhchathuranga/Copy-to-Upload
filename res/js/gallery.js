@@ -12,11 +12,21 @@ var resizeAll = function () {
 
 window.addEventListener('resize', resizeAll);
 
+if (!localStorage.getItem("session")) {
+    var key = CryptoJS.MD5(document.cookie).toString();
+    localStorage.setItem("session", key);
+    document.cookie = "key=" + key + "; samesite=strict; secure=true;";
+}
+else {
+    userId = localStorage.getItem("session");
+    document.cookie = "key=" + userId + "; samesite=None; secure=true;";
+}
+
 var req = new XMLHttpRequest();
 req.onreadystatechange = () => {
     if (req.readyState == 4) {
         var res = req.responseText;
-        console.log(res);
+        // console.log(res);
         if (res === 0) {
             alert("No images");
         }
@@ -24,18 +34,19 @@ req.onreadystatechange = () => {
             var images = JSON.parse(res);
             var GalleryInnerHTML = images.map((img) => `
             <div class="gallery-item">
-                <div class="content" id="content">
-                    <img src="${img.src}" alt="PictureBin">
-                 </div>
+                <div class="content">
+                    <img src="${img.src}" alt="PictureBin" />
+                    <div class="cover" onclick="window.location.replace('http://localhost/CTU/single.html?img=${img.name}')"></div>
+                </div>
             </div>
             `
             ).join("");
-            console.log(GalleryInnerHTML);
+            // console.log(GalleryInnerHTML);
             gallery.innerHTML = GalleryInnerHTML;
             gallery.querySelectorAll('img').forEach(function (item) {
                 item.classList.add('byebye');
                 if (item.complete) {
-                    console.log(item.src);
+                    // console.log(item.src);
                 }
                 else {
                     item.addEventListener('load', function () {
@@ -49,11 +60,13 @@ req.onreadystatechange = () => {
             });
             gallery.querySelectorAll('.gallery-item').forEach(function (item) {
                 item.addEventListener('click', function () {
-                    item.classList.toggle('full');
+                    // item.classList.toggle('full');
                 });
             });
         }
     }
 }
-req.open("GET", "view.php", true);
+req.open("GET", "gallery.php", true);
 req.send();
+
+

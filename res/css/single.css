@@ -1,0 +1,35 @@
+* {
+    /* border: 1px solid black; */
+}
+
+main {
+    background-color: whitesmoke;
+    background-image: url("https://www.transparenttextures.com/patterns/lyonnette.png");
+    border-bottom: 0px solid black;
+    /* height: 450px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.text-green {
+    color: #4daf7b !important;
+}
+
+.shadow-medium {
+    box-shadow: 1px 1px 10px 1px #4daf7b3e;
+}
+
+.img-container img {
+    cursor: pointer;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 16px #333;
+    transition: all 1.5s ease;
+}
+
+.img-container img:hover {
+    box-shadow: 0 0 32px #333;
+    transform: scale(1.02) !important;
+}

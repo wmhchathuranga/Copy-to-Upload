@@ -66,7 +66,6 @@ window.addEventListener('paste', e => {
 
 
 if (!localStorage.getItem("session")) {
-    // key = document.cookie.split('').reduce((prevHash, currVal) => (((prevHash << 5) - prevHash) + currVal.charCodeAt(0)) | 0, 0);
     var key = CryptoJS.MD5(document.cookie).toString();
     localStorage.setItem("session", key);
     document.cookie = "key=" + key + "; samesite=strict; secure=true;";

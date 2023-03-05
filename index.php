@@ -11,14 +11,14 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>PictureBin | Home</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-     <link rel="stylesheet" href="./res/css/upload.css">
+     <link rel="stylesheet" href="./res/css/index.css">
  </head>
 
  <body>
 
      <nav class="navbar navbar-expand-lg bg-dark position-absolute w-100 py-2 shadow-medium">
          <div class="container">
-             <a class="navbar-brand fs-3" href="#"><span class="text-green fst-italic">Picture</span><span class="fst-italic text-secondary">Bin</span></a>
+             <a class="navbar-brand fs-3" href="./"><span class="text-green fst-italic">Picture</span><span class="fst-italic text-secondary">Bin</span></a>
              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                  <span class="navbar-toggler-icon"></span>
              </button>
@@ -46,7 +46,7 @@
                  <div class="uploaded uploaded--one row mx-auto" id="uploaded">
                  </div>
                  <div class="count text-danger text-center" id="remaining">
-                     <p class="m-0">Remaining Images : <span id="count">3</span></p>
+                     <!-- <p class="m-0">Remaining Images : <span id="count">3</span></p> -->
                  </div>
                  <div class="text-center my-2 d-none" id="submit">
                      <button class="btn btn-success w-50" onclick="addToGallery()">Add to Gallery</button>
@@ -60,7 +60,7 @@
      <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
-     <script src="./res/js/upload.js"> </script>
+     <script src="./res/js/index.js"> </script>
  </body>
 
  </html>
