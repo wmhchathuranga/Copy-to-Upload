@@ -42,7 +42,7 @@
             $img = new stdClass();
             $row = $res->fetch_assoc();
             $img->id = $row['id'];
-            $img->name = str_replace("copy_bin/","",$row['img_name']);
+            // $img->name = str_replace("copy_bin/","",$row['img_name']);
             $img_data = file_get_contents($row['img_name']);
             $type = pathinfo($row['img_name'], PATHINFO_EXTENSION);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($img_data);
