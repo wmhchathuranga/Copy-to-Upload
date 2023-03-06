@@ -1,11 +1,12 @@
  <?php
     session_start();
     require_once "./connection.php";
-
     require_once "./aws/aws-autoloader.php";
+    ini_set("upload_max_filesize", "10M");
+    $singleLimit = 2097152;
 
     use Aws\S3\S3Client;
-    use Aws\S3\Exception\S3Exception;
+    // use Aws\S3\Exception\S3Exception;
 
     // AWS Info
     $bucketName = 'picturebin';
@@ -41,7 +42,6 @@
 
     $query1 = Database::$connection->prepare("SELECT * FROM `user` WHERE `key` = ? ");
     $query1->bind_param("s", $userId);
-
     $query1->execute();
     $res = $query1->get_result();
 
@@ -54,25 +54,35 @@
         $query2->bind_param("is", $id, $userId);
         $query2->execute();
     }
-    foreach ($files['tmp_name'] as $tmp_name) {
-        $id = Database::insert_id('image');
-        $file_name = "copy_bin/" . md5(time() . uniqid()) . ".png";
 
-        $s3->putObject(
-            array(
-                'Bucket' => $bucketName,
-                'Key' =>  $file_name,
-                'SourceFile' => $tmp_name,
-                'StorageClass' => 'REDUCED_REDUNDANCY',
-                'ACL'   => 'public-read'
-            )
-        );
-        // https://picturebin.s3.amazonaws.com/copy_bin/572754defefb0a1dba80c5731932521c.png
-        // move_uploaded_file($tmp_name, $file_name);
-        $img_url = "https://" . $bucketName . ".s3.amazonaws.com/" . $file_name;
-        $query3 = Database::$connection->prepare("INSERT INTO `image` (`id`,`img_name`,`user_id`) values (?,?,?)");
-        $query3->bind_param("isi", $id, $img_url, $_SESSION['user']['id']);
-        $query3->execute();
-    }
 
-    echo 1;
+    $query3 = Database::$connection->prepare("SELECT * FROM `image` WHERE `user_id` = ? ");
+    $query3->bind_param("s", $_SESSION['user']['id']);
+    $query3->execute();
+    $res = $query3->get_result();
+
+    echo "images : " . $res->num_rows;
+
+
+    // foreach ($files['tmp_name'] as $tmp_name) {
+    //     $id = Database::insert_id('image');
+    //     $file_name = "copy_bin/" . md5(time() . uniqid()) . ".png";
+
+    //     $s3->putObject(
+    //         array(
+    //             'Bucket' => $bucketName,
+    //             'Key' =>  $file_name,
+    //             'SourceFile' => $tmp_name,
+    //             'StorageClass' => 'REDUCED_REDUNDANCY',
+    //             'ACL'   => 'public-read'
+    //         )
+    //     );
+
+    //     $img_url = "https://" . $bucketName . ".s3.amazonaws.com/" . $file_name;
+    //     $img_size = $files['size'];
+    //     $query3 = Database::$connection->prepare("INSERT INTO `image` (`id`,`img_name`,`user_id`,`size`) values (?,?,?,?)");
+    //     $query3->bind_param("isii", $id, $img_url, $_SESSION['user']['id'], $img_size);
+    //     $query3->execute();
+    // }
+
+    // echo 1;
