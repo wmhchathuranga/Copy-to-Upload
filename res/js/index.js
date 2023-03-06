@@ -90,6 +90,6 @@ function addToGallery() {
             }
         }
     }
-    req.open("POST", "save.php", true);
+    req.open("POST", "upload.php", true);
     req.send(form);
 }
